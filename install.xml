@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Parchost</name>
+    <version>1.0</version>
+    <author>Parchost</author>
+    <link>http://www.parchost.com</link>
+    <file path="catalog/controller/common/home.php">
+        <operation>
+            <search><![CDATA[
+            $data['column_left'] = $this->load->controller('common/column_left');
+            ]]></search>
+            <add position="replace"><![CDATA[
+            test123
+            ]]></add>
+        </operation>
+    </file>  
+</modification>
