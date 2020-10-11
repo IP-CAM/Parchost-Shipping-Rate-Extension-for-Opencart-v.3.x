@@ -73,5 +73,16 @@ class ModelExtensionShippingParchost extends Model
 	private function getCoordinatesForAddress($address)
 	{
 		return ["long" => 2.34555, "lat" => 1.23444];
+		$apiKey = 'ksddlfsglfgkldsfkgldfsgdfgdfgdfgdgdfg';
+		$cURLConnection = curl_init('https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&key=' . $apiKey);
+		curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
+		$apiResponse = curl_exec($cURLConnection);
+		curl_close($cURLConnection);
+
+		// $apiResponse - available data from the API request
+		$jsonArrayResponse = json_decode($apiResponse, true);
+
+		$location =  $jsonArrayResponse['results'][0]['geometry']['location'];
+		return ["long" => $location['lng'], "lat" => $location['lat']];
 	}
 }
